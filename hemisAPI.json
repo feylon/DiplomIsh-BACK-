@@ -1,0 +1,113 @@
+{
+  "success": true,
+  "error": null,
+  "data": {
+    "first_name": "JAMSHID",
+    "second_name": "ERGASHEV",
+    "third_name": "JO‘RAQUL O‘G‘LI",
+    "full_name": "ERGASHEV JAMSHID JO‘RAQUL O‘G‘LI",
+    "short_name": "ERGASHEV J. J.",
+    "student_id_number": "388211100546",
+    "image": "https://hemis.samtuit.uz/static/crop/3/2/320_320_90_3272605016.jpg",
+    "birth_date": 1031961600,
+    "passport_pin": "51409026080052",
+    "passport_number": "AC0183148",
+    "email": "jamshid14092002@gmail.com",
+    "phone": "+998941791409",
+    "gender": {
+      "code": "11",
+      "name": "Erkak"
+    },
+    "university": "Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti",
+    "specialty": {
+      "id": "1b60a79e-36d2-fb8b-a059-791d4ef8e571",
+      "code": "60610500",
+      "name": "Kompyuter injiniringi (Kompyuter injiniringi)"
+    },
+    "studentStatus": {
+      "code": "11",
+      "name": "O‘qimoqda"
+    },
+    "educationForm": {
+      "code": "11",
+      "name": "Kunduzgi"
+    },
+    "educationType": {
+      "code": "11",
+      "name": "Bakalavr"
+    },
+    "paymentForm": {
+      "code": "12",
+      "name": "To‘lov-shartnoma"
+    },
+    "group": {
+      "id": 133,
+      "name": "KI21-02",
+      "educationLang": {
+        "code": "11",
+        "name": "O‘zbek"
+      }
+    },
+    "faculty": {
+      "id": 1,
+      "name": "Kompyuter injiniringi",
+      "code": "388-101",
+      "structureType": {
+        "code": "11",
+        "name": "Fakultet"
+      },
+      "localityType": {
+        "code": "11",
+        "name": "Mahalliy"
+      },
+      "parent": null,
+      "active": true
+    },
+    "educationLang": {
+      "code": "11",
+      "name": "O‘zbek"
+    },
+    "level": {
+      "code": "14",
+      "name": "4-kurs"
+    },
+    "semester": {
+      "id": 374,
+      "code": "18",
+      "name": "8-semestr",
+      "current": true,
+      "education_year": {
+        "code": "2024",
+        "name": "2024-2025",
+        "current": true
+      }
+    },
+    "password_valid": true,
+    "address": "Samarqand viloyati Payariq tumani Maniobod M.F.Y Paxtakor q.q",
+    "country": {
+      "code": "UZ",
+      "name": "O‘zbekiston"
+    },
+    "province": {
+      "code": "1718",
+      "name": "Samarqand viloyati",
+      "_parent": "1718"
+    },
+    "district": {
+      "code": "1718224",
+      "name": "Payariq tumani",
+      "_parent": "1718"
+    },
+    "socialCategory": {
+      "code": "10",
+      "name": "Boshqa"
+    },
+    "accommodation": {
+      "code": "15",
+      "name": "Talabalar turar joyida"
+    },
+    "validateUrl": "https://student.samtuit.uz/api/info/student?h=122bcbf5-8e72-d1ca-183d-9b07db50f8e3",
+    "hash": "22fe549fd23900931b8dd5e820c554811e2cd1da50f72163291c7baaf47b71d0"
+  },
+  "code": 200
+}
