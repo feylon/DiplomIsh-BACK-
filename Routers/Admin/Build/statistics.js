@@ -12,7 +12,7 @@ const schema = Joi.object({
 
 
 
-router.get("/", verify, checkrole("admin"), async (req, res) => {
+router.post("/", verify, checkrole("admin"), async (req, res) => {
 const {error, value} = schema.validate(req.body);
 if (error) return res.status(400).json({status: false, message: error.details[0].message});
 const {status} = value;
@@ -22,6 +22,7 @@ try {
   history.id as id,
   users.full_name as full_name,
   users.phone as user_phone,
+  users.groupname as groupname,
   users.img_url as img_url,
   history.enter_time as enter_time,
   history.exit_time as exit_time,
@@ -40,11 +41,11 @@ LIMIT 1000;
 
 ;
     `, [req.user.id, status]);
-res.send({
-    status: true,
-    message: "Success",
-    data:((data.rows))
-});
+res.status(200).send(
+    
+    
+  data.rows
+);
 } catch (error) {
     console.log(error);
     return res.status(500).json({status: false, message: "Internal server error"});

@@ -28,6 +28,25 @@ where user_id = $1
     if (data.rowCount == 0) return res.status(404).json({status: false, message: "Build not found"});
     const build_id = data.rows[0].id;        
 
+
+    // Check dominate
+    const checkID = await pool.query(
+        `
+        Select * from history
+where status = 'in' AND build_id =  $1
+and
+user_id = $2
+        `,
+        [build_id, student_id]
+    );
+
+    if(checkID.rowCount > 0){
+     return res.status(409).send({
+            uz : "Siz binodasiz",
+            en : "You are in the building."
+        })
+    }
+
     const result = await pool.query(`
     insert into history (build_id, user_id, message)
     values ($1, $2, 'Build Entered')`,

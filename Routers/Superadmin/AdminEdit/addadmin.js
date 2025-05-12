@@ -35,8 +35,8 @@ router.post("/", verify, checkrole("superadmin"), async (req, res) => {
 const hashPassword_pin = await hashPassword(passport_pin);
     try {
         const result = await pool.query(
-            `INSERT INTO users (student_id_number, full_name, password, email, passport_pin, passport_number, phone, gender)
-             VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`,
+            `INSERT INTO users (student_id_number, full_name, password, email, passport_pin, passport_number, phone, gender,role)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 'admin');`,
             [
                 student_id_number, full_name, hashPassword_pin, email, passport_pin, passport_number, phone, gender
             ]

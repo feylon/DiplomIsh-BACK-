@@ -1,0 +1,1 @@
+import{u as a,a as e,o as s,b as o,w as t,d as c,D as n,ao as _,H as r}from"./index-CHLpyvbT.js";import{_ as u}from"./Admin-ES92iUVR.js";const k={__name:"CheckID",setup(l){const{t:m,locale:f}=a();return _(),e(),s(async()=>{}),(i,p)=>(r(),o(u,null,{default:t(()=>[c(n)]),_:1}))}};export{k as default};

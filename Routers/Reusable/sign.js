@@ -76,7 +76,7 @@ const loginSchema = Joi.object({
     }),
 });
 
-router.post("/", limiter, async (req, res) => {
+router.post("/",  async (req, res) => {
     const { error, value } = loginSchema.validate(req.body);
     if (error) {
         return res.status(400).json({ error: error.details[0].message });
@@ -91,7 +91,7 @@ try {
         [login]
     );
     if(result.rowCount > 0) {
-        return res.status(401).json({ message: "Foydalanuvchi ro'yxatdan o'tgan" });
+        return res.status(499).json({ message: "Foydalanuvchi ro'yxatdan o'tgan" });
     }
 } catch (error) {
     console.log(error);

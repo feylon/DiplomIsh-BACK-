@@ -6,7 +6,12 @@ import { pool } from './functions/db.js';
 import { } from './functions/bcrypt.js';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import {} from "./functions/crypto.js"
+import {} from "./functions/crypto.js";
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+// import swaggerDocument from "./swagger.json" assert { type: "json" };
+
 
 (async () => {
     try {
@@ -30,7 +35,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public')); // Serve static files from the 'public' directory
+app.use(express.static('./uploads')); // Serve static files from the 'public' directory
 app.use((err, req, res, next) => {
     if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
         console.error('Bad JSON');
@@ -38,10 +43,9 @@ app.use((err, req, res, next) => {
     }
     next(err);
 });
-app.get('/', (req, res) => {
-    res.send('Hello, Express ESM!');
-});
+
 // Error handling middleware
+
 
 // reusable routers
 import login from "./Routers/Reusable/login.js";
@@ -89,6 +93,10 @@ const options = {
 
 const swaggerSpec = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

@@ -20,8 +20,10 @@ CREATE TABLE IF NOT EXISTS users (
     created_at timestamp DEFAULT now()
 );
 
-alter table users
-add column groupname varchar(50);
+alter table
+    users
+add
+    column groupname varchar(50);
 
 -- Build table
 CREATE TABLE IF NOT EXISTS build (
@@ -33,13 +35,12 @@ CREATE TABLE IF NOT EXISTS build (
 );
 
 -- ENUM for build status
-CREATE TYPE build_status AS ENUM
- ('in', 'out', 'panding', 'rejected');
+CREATE TYPE build_status AS ENUM ('in', 'out', 'panding', 'rejected');
 
 -- History table
 CREATE TABLE IF NOT EXISTS history (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-    build_id uuid REFERENCES build(id) ON DELETE CASCADE, 
+    build_id uuid REFERENCES build(id) ON DELETE CASCADE,
     user_id uuid REFERENCES users(id) ON DELETE CASCADE,
     status build_status NOT NULL DEFAULT 'in',
     enter_time timestamp DEFAULT now(),
@@ -48,41 +49,49 @@ CREATE TABLE IF NOT EXISTS history (
     created_at timestamp DEFAULT now()
 );
 
+ALTER TABLE
+    users
+ALTER COLUMN
+    img_url TYPE VARCHAR(250);
 
-ALTER TABLE users
-ALTER COLUMN img_url TYPE VARCHAR(250);
+INSERT INTO
+    users (
+        full_name,
+        email,
+        password,
+        phone,
+        student_id_number,
+        passport_pin,
+        passport_number,
+        gender,
+        role,
+        img_url
+    )
+VALUES
+    (
+        'ERGASHEV JAMSHID JO‘RAQUL O‘G‘LI',
+        'jamshid14092002@gmail.com',
+        '$2b$10$iQ1gxyVv/FZyuqimBq4QX.wI/t.IZrMrGlKSAP9mIoO1wODmBa9cS',
+        '+998941791409',
+        '388211100546',
+        'AC0183148',
+        '51409026080052',
+        'Erkak',
+        'superadmin',
+        'https://hemis.samtuit.uz/static/crop/3/2/320_320_90_3272605016.jpg'
+    );
 
-INSERT INTO users (
-    full_name,
-    email,
-    password,
-    phone,
-    student_id_number,
-    passport_pin,
-    passport_number,
-    gender,
-    role,
-    img_url
-) VALUES (
-    'ERGASHEV JAMSHID JO‘RAQUL O‘G‘LI',
-    'jamshid14092002@gmail.com',
-    '$2b$10$iQ1gxyVv/FZyuqimBq4QX.wI/t.IZrMrGlKSAP9mIoO1wODmBa9cS',
-    '+998941791409',
-    '388211100546',
-    'AC0183148',
-    '51409026080052',
-    'Erkak',
-    'superadmin',
-    'https://hemis.samtuit.uz/static/crop/3/2/320_320_90_3272605016.jpg'
-);
 -- MyPassword : mysecretpassword
-
-
 -- loginHistory
- CREATE table loginHistory(
+CREATE table loginHistory(
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id uuid REFERENCES users(id) ON DELETE CASCADE,
     login_time timestamp DEFAULT now(),
     ip_address varchar(50) NOT NULL,
     user_agent text NOT NULL
- );
+);
+
+alter table
+    users
+add
+    column img varchar(50);
