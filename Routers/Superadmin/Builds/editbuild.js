@@ -3,7 +3,7 @@ import { verify, checkrole } from "../../../functions/jwt.js";
 import { pool } from "../../../functions/db.js";
 import Joi from "joi";
 
-// url = http://localhost:3000/api/superadmin/editbuild/:id
+// url = http://localhost:3000/api/superadmin/editbuild/:id tags Superadmin
 const router = Router();
 
 const Schema = Joi.object({
@@ -57,3 +57,88 @@ router.patch('/:id', verify, checkrole('superadmin'), async (req, res) => {
 });
 
 export default router;
+/**
+ * @swagger
+ * /api/superadmin/editbuild/{id}:
+ *   patch:
+ *     summary: Mavjud binoni tahrirlash (faqat superadmin)
+ *     description: Superadmin mavjud binoning nomi, tavsifi va unga biriktirilgan foydalanuvchini yangilaydi.
+ *     tags:
+ *       - Superadmin
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Tahrir qilinayotgan binoning UUID formadagi IDsi
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *           example: 123e4567-e89b-12d3-a456-426614174000
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - description
+ *               - user_id
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: Bino B
+ *               description:
+ *                 type: string
+ *                 example: Matematika fakulteti uchun ajratilgan bino
+ *               user_id:
+ *                 type: string
+ *                 format: uuid
+ *                 example: 550e8400-e29b-41d4-a716-446655440000
+ *     responses:
+ *       200:
+ *         description: Bino muvaffaqiyatli yangilandi
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Build muvaffaqiyatli yangilandi
+ *       400:
+ *         description: Yaroqsiz ma'lumot
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *       401:
+ *         description: Noto‘g‘ri user_id yoki ID formati noto‘g‘ri
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Foydalanuvchi ID noto'g'ri
+ *       403:
+ *         description: Ruxsat yo‘q. Faqat superadmin kirishi mumkin
+ *       404:
+ *         description: Bino topilmadi
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Build topilmadi
+ *       500:
+ *         description: Ichki server xatoligi
+ */

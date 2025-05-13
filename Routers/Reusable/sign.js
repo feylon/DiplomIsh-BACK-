@@ -174,3 +174,73 @@ res.send("ok");
 });
 
 export default router;
+// URL http://localhost:3000/api/sign tags : avtorizatsiya
+/**
+ * @swagger
+ * /api/sign:
+ *   post:
+ *     summary: Foydalanuvchini HEMIS orqali ro'yxatdan o'tkazish
+ *     description: 
+ *       HEMIS API orqali login va parol yuboriladi. Agar foydalanuvchi HEMIS bazasida mavjud bo‘lsa va tizimda hali ro‘yhatdan o‘tmagan bo‘lsa, u holda ma’lumotlar olinib, foydalanuvchi tizimga qo‘shiladi.
+ *     tags:
+ *       - Avtorizatsiya
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - login
+ *               - password
+ *             properties:
+ *               login:
+ *                 type: integer
+ *                 example: 2100123456
+ *                 description: Talabaning login raqami (student_id_number)
+ *               password:
+ *                 type: string
+ *                 example: myPassword123
+ *                 description: Talabaning HEMIS paroli
+ *     responses:
+ *       200:
+ *         description: Foydalanuvchi muvaffaqiyatli ro'yxatdan o'tdi
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Foydalanuvchi muvaffaqiyatli ro'yxatdan o'tdi
+ *       401:
+ *         description: Login yoki parol xato yoki token noto‘g‘ri
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Login yoki parol xato
+ *       499:
+ *         description: Foydalanuvchi allaqachon ro'yxatdan o'tgan
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Foydalanuvchi ro'yxatdan o'tgan
+ *       500:
+ *         description: Serverda xatolik yuz berdi
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Serverda xatolik
+ */

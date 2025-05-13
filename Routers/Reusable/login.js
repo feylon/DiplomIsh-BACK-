@@ -76,3 +76,80 @@ router.post("/", async (req, res) => {
 });
 
 export default router;
+// URL http://localhost:3000/api/login tags : avtorizatsiya
+/**
+ * @swagger
+ * /api/login:
+ *   post:
+ *     summary: Student login
+ *     description: Login with student_id_number and password to receive a JWT token.
+ *     tags:
+ *       - Avtorizatsiya
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - student_id_number
+ *               - password
+ *             properties:
+ *               student_id_number:
+ *                 type: integer
+ *                 example: 123456
+ *               password:
+ *                 type: string
+ *                 example: mySecretPassword
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Login successful.
+ *                 token:
+ *                   type: string
+ *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: integer
+ *                       example: 1
+ *                     full_name:
+ *                       type: string
+ *                       example: John Doe
+ *                     student_id_number:
+ *                       type: integer
+ *                       example: 123456
+ *                     role:
+ *                       type: string
+ *                       example: student
+ *                     phone:
+ *                       type: string
+ *                       example: +998901234567
+ *                     img_url:
+ *                       type: string
+ *                       example: https://example.com/avatar.jpg
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: student_id_number is required.
+ *       401:
+ *         description: Invalid credentials
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Internal server error
+ */

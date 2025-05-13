@@ -9,6 +9,7 @@ import swaggerUi from 'swagger-ui-express';
 import {} from "./functions/crypto.js";
 import { fileURLToPath } from 'url';
 import path from 'path';
+import swaggerSpec from "./swagger.js"; // yuqoridagi fayl
 
 // import swaggerDocument from "./swagger.json" assert { type: "json" };
 
@@ -43,6 +44,7 @@ app.use((err, req, res, next) => {
     }
     next(err);
 });
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Error handling middleware
 
@@ -91,7 +93,7 @@ const options = {
     apis: ['./routes/*.js'], 
 };
 
-const swaggerSpec = swaggerJsdoc(options);
+// const swaggerSpec = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 

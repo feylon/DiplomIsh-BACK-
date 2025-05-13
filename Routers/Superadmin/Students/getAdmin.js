@@ -3,7 +3,9 @@ import { verify, checkrole } from "../../../functions/jwt.js";
 import { pool } from "../../../functions/db.js";
 import Joi from "joi";
 
-//url http://localhost:3000/api/admin/getusers?page=1&size=2
+//url http://localhost:3000/api/superadmin/getusers?page=1&size=2 tags : Superadmin 
+
+
 
 const router = Router();
 
@@ -56,3 +58,108 @@ router.get('/', verify, checkrole('superadmin'), async (req, res) => {
 });
 
 export default router;
+/**
+ * @swagger
+ * /api/superadmin/getusers:
+ *   get:
+ *     summary: Admin foydalanuvchilarni sahifalab olish (faqat superadmin uchun)
+ *     description: Superadmin barcha admin rolli foydalanuvchilar ro'yxatini sahifalab ko'rishi mumkin. JWT token va superadmin roli talab etiladi.
+ *     tags:
+ *       - Superadmin
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: page
+ *         in: query
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Sahifa raqami (1 dan boshlab)
+ *       - name: size
+ *         in: query
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Har bir sahifadagi foydalanuvchi soni
+ *     responses:
+ *       200:
+ *         description: Adminlar ro'yxati muvaffaqiyatli qaytarildi
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 students:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         example: 1
+ *                       full_name:
+ *                         type: string
+ *                         example: Nodira Karimova
+ *                       email:
+ *                         type: string
+ *                         example: nodira@example.com
+ *                       phone:
+ *                         type: string
+ *                         example: +998901234567
+ *                       student_id_number:
+ *                         type: string
+ *                         example: 2100456789
+ *                       passport_pin:
+ *                         type: string
+ *                         example: AB1234567
+ *                       passport_number:
+ *                         type: string
+ *                         example: AA1234567
+ *                       gender:
+ *                         type: string
+ *                         example: Ayol
+ *                       role:
+ *                         type: string
+ *                         example: admin
+ *                       img_url:
+ *                         type: string
+ *                         example: https://example.com/image.jpg
+ *                       groupname:
+ *                         type: string
+ *                       created_at:
+ *                         type: string
+ *                         format: date-time
+ *                         example: 2025-05-10T12:34:56.000Z
+ *                 pagination:
+ *                   type: object
+ *                   properties:
+ *                     total:
+ *                       type: integer
+ *                       example: 25
+ *                     page:
+ *                       type: integer
+ *                       example: 1
+ *                     size:
+ *                       type: integer
+ *                       example: 10
+ *                     totalPages:
+ *                       type: integer
+ *                       example: 3
+ *       400:
+ *         description: Noto‘g‘ri so‘rov parametrlari
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *       401:
+ *         description: Ruxsat etilmagan. Token mavjud emas yoki noto‘g‘ri
+ *       403:
+ *         description: Ruxsat yo‘q. Faqat superadmin kirishi mumkin
+ *       500:
+ *         description: Ichki server xatoligi
+ */

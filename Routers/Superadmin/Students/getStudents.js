@@ -56,3 +56,112 @@ router.get('/', verify, checkrole('superadmin'), async (req, res) => {
 });
 
 export default router;
+// URL http://localhost:3000/api/superadmin/getuser tags : Superadmin
+/**
+ * @swagger
+ * /api/superadmin/getuser:
+ *   get:
+ *     summary: Talabalarni sahifalab olish (faqat superadmin uchun)
+ *     description: Superadmin barcha talabalar ro'yxatini sahifalab ko'rishi mumkin. JWT token va superadmin roli talab etiladi.
+ *     tags:
+ *       - Superadmin
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: page
+ *         in: query
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Sahifa raqami (1 dan boshlab)
+ *       - name: size
+ *         in: query
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Har bir sahifadagi elementlar soni
+ *     responses:
+ *       200:
+ *         description: Talabalar ro'yxati muvaffaqiyatli qaytarildi
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 students:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         example: 1
+ *                       full_name:
+ *                         type: string
+ *                         example: Ali Valiyev
+ *                       email:
+ *                         type: string
+ *                         example: ali@example.com
+ *                       phone:
+ *                         type: string
+ *                         example: +998901234567
+ *                       student_id_number:
+ *                         type: string
+ *                         example: 2100456789
+ *                       passport_pin:
+ *                         type: string
+ *                         example: AB1234567
+ *                       passport_number:
+ *                         type: string
+ *                         example: AA1234567
+ *                       gender:
+ *                         type: string
+ *                         example: Erkak
+ *                       role:
+ *                         type: string
+ *                         example: student
+ *                       img_url:
+ *                         type: string
+ *                         example: https://example.com/image.jpg
+ *                       groupname:
+ *                         type: string
+ *                         example: 913-22
+ *                       created_at:
+ *                         type: string
+ *                         format: date-time
+ *                         example: 2025-05-10T12:34:56.000Z
+ *                 pagination:
+ *                   type: object
+ *                   properties:
+ *                     total:
+ *                       type: integer
+ *                       example: 100
+ *                     page:
+ *                       type: integer
+ *                       example: 1
+ *                     size:
+ *                       type: integer
+ *                       example: 10
+ *                     totalPages:
+ *                       type: integer
+ *                       example: 10
+ *       400:
+ *         description: Noto‘g‘ri so‘rov parametrlari
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *       401:
+ *         description: Ruxsat etilmagan. Token mavjud emas yoki noto‘g‘ri
+ *       403:
+ *         description: Ruxsat yo‘q. Faqat superadmin kirishi mumkin
+ *       500:
+ *         description: Ichki server xatoligi
+ */
+
+
