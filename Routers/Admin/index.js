@@ -1,5 +1,5 @@
 import enterstudent from './Build/Enter.js';
-import exitstudent from './Build/exit.js';
+import exitstudent from './Build/Exit.js';
 import statistics from './Build/statistics.js';
 import student from './Student/student.js';
 

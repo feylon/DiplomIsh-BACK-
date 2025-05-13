@@ -30,7 +30,7 @@ import swaggerSpec from "./swagger.js"; // yuqoridagi fayl
 dotenv.config(); // Load environment variables from a .env file
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
