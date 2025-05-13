@@ -1,0 +1,1 @@
+import{u as a,a as e,o as s,b as o,w as t,d as c,D as n,ao as _,H as r}from"./index-BPmJ8zEA.js";import{_ as u}from"./Admin-CP3jiQJ7.js";const k={__name:"CheckID",setup(l){const{t:m,locale:f}=a();return _(),e(),s(async()=>{}),(i,p)=>(r(),o(u,null,{default:t(()=>[c(n)]),_:1}))}};export{k as default};

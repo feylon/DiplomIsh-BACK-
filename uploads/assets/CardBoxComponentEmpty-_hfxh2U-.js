@@ -1,0 +1,1 @@
+import{ah as t,j as o,H as r,e as s}from"./index-BPmJ8zEA.js";const n={},a={class:"text-center py-24 text-gray-500 dark:text-slate-400"};function c(p,e){return r(),o("div",a,e[0]||(e[0]=[s("p",null,"Nothing's here…",-1)]))}const d=t(n,[["render",c]]);export{d as C};
