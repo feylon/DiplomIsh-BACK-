@@ -2,7 +2,6 @@ import { Router } from "express";
 import { verify, checkrole } from "../../../functions/jwt.js";
 import { pool } from "../../../functions/db.js";
 import Joi from "joi";
-import {encrypt} from "../../../functions/crypto.js";
 
 
 const router = Router();
